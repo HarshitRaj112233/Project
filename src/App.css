@@ -1,38 +1,221 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  height: 100%;
+  font-size: 62.5%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 70px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: rgb(235, 252, 7);
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.logo {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: white;
+  color: rgb(144, 155, 0);
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px 2px 2px 5px;
+}
+.logo::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  bottom: -10px;
+}
+.title {
+  position: absolute;
+  left: 78px;
+  top: 36px;
+  color: rgb(132, 141, 0);
+  font-size: 25px;
+  font-family: cursive;
+  font-weight: 550;
+}
+.title::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  bottom: -10px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+
+  background-color: rgb(183, 196, 1);
+  width: 100%;
+  height: 50px;
+}
+footer p {
+  text-align: center;
+  line-height: 30px;
   color: white;
+  font-family: cursive;
+  font-weight: 550;
 }
 
-.App-link {
-  color: #61dafb;
+.main_note {
+  position: relative;
+  width: 500px;
+  margin: auto;
 }
+form {
+  height: 120px;
+  width: 100%;
+  /* position: relative; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+input {
+  width: 100%;
+  outline: none;
+  border: none;
+  height: 40px;
+  margin-top: 10px;
+  padding: 5px 0 0 10px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+}
+textarea {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  border: none;
+  outline: none;
+  padding: 5px 0 0 10px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+.main_note_button {
+  position: absolute;
+  bottom: -40px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  background-color: rgb(241, 255, 89);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.main_note_button:hover {
+  background-color: rgb(235, 252, 7);
+}
+.note_Display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.note {
+  width: 200px;
+  position: relative;
+  margin: 50px 0 0 6px;
+  padding: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  height: 120px;
+}
+.note h1 {
+  font-size: 1.3rem;
+}
+.note p {
+  margin-bottom: 5px;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+.note .note_button {
+  position: absolute;
+  right: 20px;
+  bottom: 8px;
+  width: 20px;
+  height: 25px;
+  background-color: rgb(239, 255, 13);
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+}
+.note_button_button {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 7px;
+
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 35px;
+  top: 7px;
+  left: 4px;
+  user-select: none;
+  cursor: pointer;
+}
+.note_button:hover {
+  background-color: rgb(255, 255, 96);
+}
+.note_button h4 {
+  position: absolute;
+  right: -56px;
+  font-size: 12px;
+  bottom: 3px;
+  background-color: rgb(194, 192, 192);
+  color: rgb(59, 59, 59);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+
+  padding: 1px 5px;
+  border-radius: 6px;
+  visibility: hidden;
+  opacity: 0;
+  transform: 0.5s;
+}
+.note_button h4::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(194, 192, 192);
+  border-radius: 2px;
+  top: 6px;
+  left: -3px;
+  color: aliceblue;
+  transform: rotate(45deg);
+}
+.note .note_button:hover h4 {
+  visibility: visible;
+  opacity: 1;
 }

@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Header from "./Header";
+import "./App.css";
+import { Footer } from "./Footer";
+import { CreateNode } from "./CreateNode";
+import Note from "./Note";
 
-function App() {
+const App = () => {
+  let items = JSON.parse(localStorage.getItem("item"));
+  if (items === null) {
+    items = [];
+  }
+  const [addItem, setaddItem] = useState(items);
+
+  const PassNote = (note) => {
+    setaddItem([...addItem, note]);
+  };
+  const DeleteNode = (index) => {
+    setaddItem(
+      addItem.filter((e) => {
+        return addItem[index] !== e;
+      })
+    );
+  };
+  useEffect(() => {
+    localStorage.setItem("item", JSON.stringify(addItem));
+  }, [addItem]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {" "}
+      <Header />
+      <CreateNode PassNote={PassNote} />
+      <Note
+        addItem={addItem}
+        id={new Date().getTime()}
+        DeleteNode={DeleteNode}
+      />
+      <Footer />
+    </>
   );
-}
+};
 
 export default App;
